@@ -12,6 +12,14 @@ dial_book = {
   "phoenix" => "602"
 } 
 
+def get_area_code(dial_book,city)
+  dial_book[city]
+end
+
+def display_cities(dial_book)
+  dial_book.each {|key, value| puts key}
+end
+
 # loop until answer is not y
 loop do 
   print "Do you want to lookup a city name? (y/n)"
@@ -20,14 +28,11 @@ loop do
     break;
   else
     puts "Choose a city from the following:"
-    dial_book.each do |key, value|
-      puts key
-    end # end each 
+    display_cities(dial_book)
     city = gets.chomp
     
-    puts dial_book[city]
-    
-    puts "area code is: #{dial_book[city]}"
+    # no error checking for non existing city
+    puts "#{city} area code is:" + get_area_code(dial_book,city)
     
   end # end if
 end # end loop do
